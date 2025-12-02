@@ -28,40 +28,25 @@
   - Create docs/cheatsheets/ directory for quick references
   - _Requirements: 11.1, 11.2, 11.3, 11.4_
 
-- [/] 2. Build TypeSafe Project foundation (API package)
+- [x] 2. Build TypeSafe Project foundation (API package)
   - [x] Set up Express server with TypeScript
   - [x] Create basic project structure (models, repositories, services, controllers, middleware, utils, types)
-  - Configure Prisma ORM with PostgreSQL
-  - Create initial database schema (User and Task models)
+  - [x] Configure Prisma ORM with PostgreSQL
+  - [x] Create initial database schema (User and Task models)
   - _Requirements: 3.1, 3.2, 12.2_
+  - **CANCELLED: Switched to client-side Fake DB**
 
-- [ ] 2.1 Implement core domain models and types
-  - Create User interface and related types
-  - Create Task interface with TaskStatus and TaskPriority enums
-  - Create API response types (ApiResponse, ApiError)
-  - Create DTO types (CreateTaskDto, UpdateTaskDto, TaskFilters)
-  - _Requirements: 3.1, 12.1, 12.5_
+- [-] 2.1 Implement core domain models and types
+  - **CANCELLED: Moved to shared package**
 
-- [ ] 2.2 Implement repository pattern with generics
-  - Create generic Repository<T> interface
-  - Implement base repository class with CRUD operations
-  - Create UserRepository and TaskRepository implementations
-  - Add type-safe query methods
-  - _Requirements: 4.3, 12.2_
+- [-] 2.2 Implement repository pattern with generics
+  - **CANCELLED: Using Fake DB service**
 
-- [ ] 2.3 Implement service layer
-  - Create TaskService interface with type-safe methods
-  - Implement TaskService with business logic
-  - Create UserService for authentication
-  - Add proper error handling with typed errors
-  - _Requirements: 4.3, 8.1, 8.2_
+- [-] 2.3 Implement service layer
+  - **CANCELLED: Using Fake DB service**
 
-- [ ] 2.4 Implement Express controllers and middleware
-  - Create type-safe route handlers for task CRUD operations
-  - Implement authentication middleware with JWT typing
-  - Create validation middleware using Zod
-  - Implement error handling middleware
-  - _Requirements: 7.2, 7.3, 8.3_
+- [-] 2.4 Implement Express controllers and middleware
+  - **CANCELLED: No backend**
 
 - [/] 3. Build TypeSafe Project frontend (web package)
   - [x] Set up React with Vite and TypeScript
@@ -175,12 +160,12 @@
   - Create scenario-05-template-literals with type-safe event systems
   - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 6.1, 6.3_
 
-- [ ] 14. Implement Module 10 scenarios (Backend Architecture)
-  - Create scenario-01-express-setup with Express + TypeScript configuration
-  - Create scenario-02-typed-middleware with auth and validation middleware
-  - Create scenario-03-request-response-types with Express typing
-  - Create scenario-04-route-handlers with type-safe controllers
-  - Create scenario-05-error-middleware with typed error handling
+- [ ] 14. Implement Module 10 scenarios (Client-Side Data Layer)
+  - Create scenario-01-fake-database with localStorage implementation
+  - Create scenario-02-async-service-layer with simulated delays
+  - Create scenario-03-type-safe-storage with JSON parsing safety
+  - Create scenario-04-data-seeding with default data
+  - Create scenario-05-service-integration connecting UI to DB
   - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 7.1, 7.2, 7.3, 7.4_
 
 - [ ] 15. Implement Module 11 scenarios (Frontend Architecture)
@@ -295,11 +280,11 @@
   - Add protected routes with type-safe guards
   - _Requirements: 12.1, 12.4_
 
-- [ ] 28. Integrate database with Prisma
-  - Set up Prisma client with TypeScript
-  - Create database migrations
-  - Implement type-safe database queries
-  - Add database seeding scripts with typed data
+- [ ] 28. Integrate Fake Database
+  - Implement FakeDatabase class with localStorage
+  - Create API client wrapper
+  - Implement CRUD operations
+  - Add data seeding
   - _Requirements: 12.2_
 
 - [ ] 29. Create end-to-end type safety demonstration

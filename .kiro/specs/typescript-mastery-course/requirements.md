@@ -48,8 +48,8 @@ The TypeScript Mastery Course is a comprehensive, project-based learning curricu
 #### Acceptance Criteria
 
 1. THE Course System SHALL guide the Learner through building the TypeSafe Project incrementally across all Learning Modules
-2. THE TypeSafe Project SHALL include a Node.js/Express REST API backend with TypeScript
-3. THE TypeSafe Project SHALL include a React frontend application with TypeScript
+2. THE TypeSafe Project SHALL include a React frontend application with TypeScript
+3. THE TypeSafe Project SHALL use a client-side "fake database" (localStorage) for data persistence
 4. WHEN a Learning Module is completed, THE Course System SHALL integrate the learned concepts into the TypeSafe Project codebase
 5. THE Course System SHALL ensure no code remains orphaned or unintegrated at any stage
 
@@ -95,11 +95,10 @@ The TypeScript Mastery Course is a comprehensive, project-based learning curricu
 
 #### Acceptance Criteria
 
-1. THE Course System SHALL demonstrate TypeScript integration with Express.js for backend development
-2. THE Course System SHALL demonstrate TypeScript integration with React including hooks, components, and context
-3. THE Course System SHALL cover TypeScript configuration (tsconfig.json) for different project types
-4. THE Course System SHALL teach how to type third-party libraries using @types packages and declaration files
-5. THE Course System SHALL include lessons on TypeScript with testing frameworks (Jest or Vitest)
+1. THE Course System SHALL demonstrate TypeScript integration with React including hooks, components, and context
+2. THE Course System SHALL cover TypeScript configuration (tsconfig.json) for different project types
+3. THE Course System SHALL teach how to type third-party libraries using @types packages and declaration files
+4. THE Course System SHALL include lessons on TypeScript with testing frameworks (Vitest)
 
 ### Requirement 8
 
@@ -155,8 +154,8 @@ The TypeScript Mastery Course is a comprehensive, project-based learning curricu
 
 #### Acceptance Criteria
 
-1. THE TypeSafe Project SHALL implement user authentication with typed JWT tokens
-2. THE TypeSafe Project SHALL include database integration with typed models (using Prisma or TypeORM)
-3. THE TypeSafe Project SHALL implement CRUD operations with full type safety from database to API to frontend
-4. THE TypeSafe Project SHALL include middleware typing for Express.js
-5. THE TypeSafe Project SHALL demonstrate type-safe API client creation for frontend-backend communication
+1. THE TypeSafe Project SHALL implement user authentication simulation
+2. THE TypeSafe Project SHALL include data persistence using localStorage
+3. THE TypeSafe Project SHALL implement CRUD operations with full type safety from service to UI
+4. THE TypeSafe Project SHALL demonstrate type-safe service layer creation
+5. THE TypeSafe Project SHALL demonstrate handling async operations with Promises

@@ -8,11 +8,10 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces",
-    "test": "npm run test --workspaces",
-    "dev:api": "npm run dev -w @typesafe/api",
-    "dev:web": "npm run dev -w @typesafe/web",
+    "test": "npm test --workspaces",
+    "dev:web": "npm run dev --workspace=@typesafe/web",
     "lint": "npm run lint --workspaces",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

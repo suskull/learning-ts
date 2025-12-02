@@ -65,25 +65,7 @@ cd typescript-mastery-course
 npm install
 ```
 
-3. Set up the API package:
-```bash
-cd packages/api
-cp .env.example .env
-# Edit .env with your database credentials
-```
-
-4. Run database migrations:
-```bash
-cd packages/api
-npx prisma migrate dev
-```
-
 ### Development
-
-Run the API server:
-```bash
-npm run dev:api
-```
 
 Run the web application:
 ```bash

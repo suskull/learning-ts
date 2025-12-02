@@ -36,7 +36,7 @@ TypeScript Mastery Course
 ├── Module 07: Generics Fundamentals
 ├── Module 08: Advanced Generics & Constraints
 ├── Module 09: Utility Types & Type Manipulation
-├── Module 10: Backend Architecture (Express + TypeScript)
+├── Module 10: Client-Side Data Layer (Fake Database)
 ├── Module 11: Frontend Architecture (React + TypeScript)
 ├── Module 12: Error Handling & Validation
 ├── Module 13: Advanced Patterns & Architecture
@@ -48,10 +48,8 @@ TypeScript Mastery Course
 The TypeSafe Project is a full-stack task management application built incrementally throughout the course.
 
 **Technology Stack:**
-- Backend: Node.js + Express + TypeScript
 - Frontend: React + TypeScript (Vite)
-- Database: PostgreSQL with Prisma ORM
-- Authentication: JWT tokens
+- Data Layer: Fake Database (localStorage)
 - Validation: Zod
 - Testing: Vitest + React Testing Library
 
@@ -60,33 +58,18 @@ The TypeSafe Project is a full-stack task management application built increment
 ```
 typesafe-project/
 ├── packages/
-│   ├── api/                    # Backend Express API
-│   │   ├── src/
-│   │   │   ├── models/         # Data models & types
-│   │   │   ├── repositories/   # Data access layer
-│   │   │   ├── services/       # Business logic
-│   │   │   ├── controllers/    # Route handlers
-│   │   │   ├── middleware/     # Express middleware
-│   │   │   ├── utils/          # Utilities & helpers
-│   │   │   ├── types/          # Shared type definitions
-│   │   │   └── server.ts       # App entry point
-│   │   ├── prisma/
-│   │   │   └── schema.prisma   # Database schema
-│   │   └── tsconfig.json
-│   │
 │   ├── web/                    # React frontend
 │   │   ├── src/
 │   │   │   ├── components/     # React components
 │   │   │   ├── hooks/          # Custom hooks
-│   │   │   ├── services/       # API client
+│   │   │   ├── services/       # API client & Fake DB
 │   │   │   ├── types/          # Type definitions
 │   │   │   ├── utils/          # Utilities
 │   │   │   └── App.tsx
 │   │   └── tsconfig.json
 │   │
-│   └── shared/                 # Shared types between API & Web
+│   └── shared/                 # Shared types
 │       ├── src/
-│       │   ├── api-types.ts    # API request/response types
 │       │   ├── domain-types.ts # Domain models
 │       │   └── validation.ts   # Shared validation schemas
 │       └── tsconfig.json
@@ -234,41 +217,47 @@ interface TaskService {
 
 ## Data Models
 
-### Database Schema (Prisma)
+### Database Schema (Fake DB)
 
-```prisma
-model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String
-  password  String
-  tasks     Task[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+The application uses a simple JSON structure stored in localStorage:
+
+```typescript
+interface DBData {
+  users: User[];
+  tasks: Task[];
 }
 
-model Task {
-  id          String       @id @default(uuid())
-  title       String
-  description String
-  status      TaskStatus   @default(TODO)
-  priority    TaskPriority @default(MEDIUM)
-  assigneeId  String
-  assignee    User         @relation(fields: [assigneeId], references: [id])
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+// User Model
+interface User {
+  id: string;
+  email: string;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// Task Model
+interface Task {
+  id: string;
+  title: string;
+  description: string;
+  status: TaskStatus;
+  priority: TaskPriority;
+  assigneeId: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 enum TaskStatus {
-  TODO
-  IN_PROGRESS
-  DONE
+  TODO = 'TODO',
+  IN_PROGRESS = 'IN_PROGRESS',
+  DONE = 'DONE'
 }
 
 enum TaskPriority {
-  LOW
-  MEDIUM
-  HIGH
+  LOW = 'LOW',
+  MEDIUM = 'MEDIUM',
+  HIGH = 'HIGH'
 }
 ```
 
@@ -489,23 +478,23 @@ interface TaskResponseDto {
 
 ---
 
-### Module 10: Backend Architecture (Express + TypeScript) (5 scenarios)
+### Module 10: Client-Side Data Layer (Fake Database) (5 scenarios)
 
 **Learning Objectives:**
-- Set up Express with TypeScript
-- Type middleware properly
-- Create type-safe route handlers
-- Implement request/response typing
-- Handle errors with types
+- Implement a client-side database using localStorage
+- Design type-safe service layers
+- Simulate async API calls with Promises
+- Handle data persistence with types
+- Implement CRUD operations without a backend
 
 **Scenarios:**
-1. **"Express Setup"** - Configure Express with TypeScript and proper types.
-2. **"Typed Middleware"** - Create authentication and validation middleware.
-3. **"Request/Response Types"** - Type Express req and res objects properly.
-4. **"Route Handler Types"** - Build type-safe controllers.
-5. **"Error Handling Middleware"** - Implement typed error handling.
+1. **"The Fake Database"** - Create a FakeDatabase class with localStorage persistence.
+2. **"Async Service Layer"** - Implement async methods to simulate network delays.
+3. **"Type-Safe Storage"** - Handle JSON serialization/deserialization safely.
+4. **"Data Seeding"** - Initialize the database with typed default data.
+5. **"Service Integration"** - Connect the frontend to the fake database service.
 
-**Key Concepts:** Express types, middleware typing, request handlers, error handling
+**Key Concepts:** localStorage, JSON parsing, async/await, service pattern, persistence
 
 ---
 

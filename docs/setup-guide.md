@@ -20,10 +20,6 @@ Before you begin, ensure you have the following installed:
    - Download from [git-scm.com](https://git-scm.com/)
    - Verify installation: `git --version`
 
-4. **PostgreSQL** (version 14 or higher)
-   - Download from [postgresql.org](https://www.postgresql.org/download/)
-   - Verify installation: `psql --version`
-
 ### Recommended Tools
 
 - **VS Code** with TypeScript extensions
@@ -49,58 +45,7 @@ npm install
 
 This will install dependencies for all packages in the monorepo.
 
-### 3. Set Up PostgreSQL Database
-
-Create a new PostgreSQL database for the course:
-
-```bash
-# Connect to PostgreSQL
-psql -U postgres
-
-# Create database
-CREATE DATABASE typesafe_dev;
-
-# Create user (optional)
-CREATE USER typesafe_user WITH PASSWORD 'your_password';
-GRANT ALL PRIVILEGES ON DATABASE typesafe_dev TO typesafe_user;
-
-# Exit psql
-\q
-```
-
-### 4. Configure Environment Variables
-
-Create environment file for the API:
-
-```bash
-cd packages/api
-cp .env.example .env
-```
-
-Edit `.env` with your database credentials:
-
-```env
-DATABASE_URL="postgresql://typesafe_user:your_password@localhost:5432/typesafe_dev"
-JWT_SECRET="your-secret-key-here"
-PORT=3000
-NODE_ENV=development
-```
-
-### 5. Run Database Migrations
-
-Initialize the database schema:
-
-```bash
-cd packages/api
-npx prisma migrate dev
-```
-
-This will:
-- Create database tables
-- Generate Prisma Client
-- Seed initial data (if configured)
-
-### 6. Verify Installation
+### 3. Verify Installation
 
 Build all packages:
 
@@ -120,12 +65,6 @@ If all tests pass, your setup is complete!
 
 ### Starting the Development Servers
 
-**API Server:**
-```bash
-npm run dev:api
-```
-The API will be available at `http://localhost:3000`
-
 **Web Application:**
 ```bash
 npm run dev:web
@@ -141,15 +80,8 @@ npm test
 
 **Specific package:**
 ```bash
-npm test -w @typesafe/api
 npm test -w @typesafe/web
 npm test -w @typesafe/shared
-```
-
-**Watch mode:**
-```bash
-cd packages/api
-npm run test:watch
 ```
 
 ### Linting and Formatting
